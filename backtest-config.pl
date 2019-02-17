@@ -1,19 +1,10 @@
 no warnings qw(uninitialized);
 ############################# START OF CONFIGURATION #############################
 # Put your strategy names between brackets in line below. Strategy seperate with space or newline.
-@strategies = qw(
-ALL
-MACD
-CCI
-RSI 
-);
+@strategies = qw();
 # Put your pairs between brackets in line below. Use exchange:currency:asset format. Seperate pair using space or newline.
 @pairs = qw(
-ALL
-binance:ALL
-bitfinex:USD:ALL
-poloniex:BTC:ADA
-kraken:EUR:XBT
+gdax.db:USD:BTC
 );
 
 # Put your candle values between brackets in line below. Use CandleSize:WarmupPeriod format. Seperate pair using space or newline.
@@ -25,8 +16,8 @@ kraken:EUR:XBT
 );
 
 # To specify time range for import or backtest uncomment lines below, but instead this you can use command line input ex.: backtest.pl --from "2018-01-01 00:00:00" --to "2018-01-05 00:00:00". If below lines are commented Gekko is using scan datasets feature in backtest mode. 
-#$from = '2018-03-18 15:00:00';
-#$to = '2018-03-22 08:00:00';
+$from = '2018-01-18 08:00:00';
+$to = '2018-05-01 01:00:00';
 
 # CSV file name. You don't need change this. All new data will append to exist file without deleting or replacing.
 $csv = 'database.csv';
@@ -104,8 +95,8 @@ config.neuralnet_BULL_BEAR = {
 # Other Gekko's settings for backtest
 $asset = 0;
 $currency = 4;
-$fee_maker = 0.05;
-$fee_taker = 0.05;
+$fee_maker = 0.25;
+$fee_taker = 0.25;
 $fee_using = 'maker';
 $slippage = 0.5;
 $riskFreeReturn = 5;

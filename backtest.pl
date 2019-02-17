@@ -660,7 +660,7 @@ else {
     my $data = pop @_;
     %paircalc = (%paircalc, %$data);
   });
-  
+
   if ($ocsv) {
     $csv = $ocsv
   }
@@ -1137,13 +1137,13 @@ Total: ".scalar @warmup."
     
     foreach (@pairs) {
       if (@pairs > scalar (keys %stratconfig) && @pairs >= @warmup && @pairs > 1) {
-        my $pid = $pm->start and next;
+        #my $pid = $pm2->start and next;
       }
       my @sets = split /:/, $_;
       
       foreach my $stratn (keys %stratconfig) {
         if (scalar (keys %stratconfig) >= @pairs && scalar (keys %stratconfig) >= @warmup && scalar (keys %stratconfig) > 1) {
-          my $pid = $pm->start and next;
+          #my $pid = $pm3->start and next;
         }
      
         my $startthread = time;
@@ -1432,19 +1432,19 @@ Total: ".scalar @warmup."
         }
 
         if (scalar (keys %stratconfig) >= @pairs && scalar (keys %stratconfig) >= @warmup && scalar (keys %stratconfig) > 1) {
-          $pm->finish(0, \%paircalc);
+          #$pm3->finish(0, \%paircalc);
         }
       }
       if (@pairs >= scalar (keys %stratconfig) && @pairs >= @warmup && @pairs > 1) {
-        $pm->finish(0, \%paircalc);
+        #$pm2->finish(0, \%paircalc);
       }
     }
     if (@warmup >= scalar (keys %stratconfig) && @warmup >= @pairs && @warmup > 1) {
       $pm->finish(0, \%paircalc);
     }
  
-  $pm->wait_all_children;
   }
+  $pm->wait_all_children;
   print "\n";
   &analyze($tmpcsv);
   my $endapp = time;
